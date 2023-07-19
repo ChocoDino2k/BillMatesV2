@@ -5,9 +5,11 @@
   --background-color: #F5F5F5;
   --font-color: #000;
   --red: #F60000;
-  --green:#00F652;
+  --green:#00E652;
   --header-border: #000;
   --container-background: #FFF;
+
+  --border-radius: 5px;
 }
 
 
@@ -42,4 +44,19 @@ header {
 }
 #header_bare p.green {
   color: var(--green);
+}
+
+#main_section {
+  overflow-y: scroll;
+  padding-bottom: 15px;
+}
+
+a {
+  color: var(--green);
+}
+
+button {
+  cursor: pointer;
+  margin: 0;
+  border: none;
 }
