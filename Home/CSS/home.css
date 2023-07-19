@@ -1,0 +1,90 @@
+.groups_container {
+  width: 100%;
+  height: auto;
+  margin-top: 15px;
+}
+
+.group {
+  width: 80%;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  background: var(--container-background);
+  padding: 15px 10px;
+  border-radius: var(--border-radius);
+  margin: auto;
+  margin-bottom: 10px;
+  cursor: pointer;
+  max-width: 750px;
+}
+
+.group p {
+  margin: 0;
+  display: inline-block;
+  font-size: 1rem;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.add_group_container {
+  margin: auto;
+  width: 70%;
+  padding: 20px 30px;
+  background: var(--container-background);
+  border-radius: var(--border-radius);
+  margin-top: 50px;
+  max-width: 500px;
+}
+
+.add_group_container > p {
+  font-size: 1.5rem;
+  display: block;
+  margin: 5px;
+  text-align: center;
+}
+.input_text_field input{
+  line-height: 1.5;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-bottom: 1px solid var(--font-color);
+  font-size: 1rem;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.input_text_field input:focus {
+  outline: none;
+  border-bottom: 1px solid var(--green);
+}
+
+.add_group_container label {
+  display: block;
+  font-size: 1rem;
+}
+
+.redirect_register {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.redirect_register p {
+  display: inline-block;
+  margin: 0;
+  margin-right: 5px;
+}
+
+.add_group_container .submit_button_container {
+  width: 100%;
+  text-align: center;
+}
+
+.submit_button_container button {
+  width: 80%;
+  font-size: 1rem;
+  background: var(--green);
+  color: #FFF;
+  padding: 10px 15px;
+  border-radius: var(--border-radius);
+}
