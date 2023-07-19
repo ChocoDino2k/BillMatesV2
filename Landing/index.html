@@ -2,17 +2,38 @@
 <html>
   <head>
    <title>Sign In</title>
-   <description>Sign in to your BillMates account</description>
+   <meta name="description" content="Sign in to your BillMates account" />
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
    <link rel="icon" type="image/x-icon" href="/Globals/favicon.ico">
 
    <link rel="stylesheet" href="CSS/sign_in.css">
    <script type="text/javascript" href="JS/sign_in.js"></script>
   </head>
   <body>
-    <header></header>
-    <section id="main_section">
+    <header id = "header_bare">
+      <div>
+        <p>Bill</p>
+        <p>Mates</p>
+      </div>
+    </header>
 
+    <section id="main_section">
+      <div id="main_div_container">
+        <div class="input_text_field">
+          <label for="username">
+            <input type="text" name="username" value="" placeholder="username">
+          </label>
+        </div>
+        <div class="input_text_field">
+          <label for="password">
+            <input type="password" name="password" value="" placeholder="password">
+          </label>
+        </div>
+        <div class="submit_button_container">
+          <button type="button" name="button">Log In</button>
+        </div>
+      <div>
     </section>
-    <footer></footer>
+
   </body>
 </html>
