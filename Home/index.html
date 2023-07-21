@@ -6,10 +6,10 @@
    <meta name="viewport" content="width=device-width, initial-scale=1" />
    <link rel="icon" type="image/x-icon" href="/Globals/favicon.ico">
    <link rel="stylesheet" href="/Globals/boilerplate.css">
-   <script type="text/javascript" href="/Globals/utils.js"></script>
+   <script type="text/javascript" src="/Globals/utils.js"></script>
 
    <link rel="stylesheet" href="CSS/home.css">
-   <script type="text/javascript" href="JS/home.js"></script>
+   <script type="text/javascript" src="JS/home.js"></script>
   </head>
   <body>
     <header id = "header_bare">
@@ -22,7 +22,7 @@
 
       </div>
       <div class="groups_container">
-        <div class="group">
+        <div class="group" onclick="goToGroup(12345)">
           <p>Group 1Group 1Group 1Group 1Group 1Group 1Group 1Group 1Group 1Group 1Group 1Group 1Group 1Group 1Group 1Group 1Group 1Group 1Group 1Group 1Group 1Group 1Group 1Group 1Group 1</p>
           <p>$5.00</p>
         </div>
@@ -78,7 +78,7 @@
       <div class="footer_div"><a href="/Home/"><img src="/Globals/billmates_logo_person_trans.png" alt=""></a></div>
       <div class="footer_div" id="plus_button"></div>
     </section>
-    <div class="hide_background">
+    <div class="hide_background hidden">
       <div class="add_group_container">
         <div class="x_button"></div>
         <p>Create a new group</p>

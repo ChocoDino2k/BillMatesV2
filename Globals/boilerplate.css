@@ -6,6 +6,8 @@
   --font-color: #000;
   --red: #F60000;
   --green:#00E652;
+  --dark-grey: #BCBCBC;
+  --light-blue: #B7F1FF;
   --header-border: #000;
   --container-background: #FFF;
   --footer-background: #E5E5E5;
@@ -144,4 +146,8 @@ button {
   background: var(--transparent-dark);
   z-index: 999;
   position: absolute;
+}
+
+.hidden {
+  display: none !important;
 }
