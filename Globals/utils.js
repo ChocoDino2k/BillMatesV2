@@ -94,3 +94,14 @@ async function register(username, fname, lname, password) {
     };
   }
 }
+
+function getToken() {
+  return document.cookie
+  .split("; ")
+  .find((row) => row.startsWith("token="))
+  ?.split("=")[1];
+}
+
+function removeToken() {
+  document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=None; Secure"
+}
