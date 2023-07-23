@@ -74,5 +74,83 @@
       <div class="footer_div"><a href="/Home/"><img src="/Globals/billmates_logo_person_trans.png" alt=""></a></div>
       <div class="footer_div" id="plus_button"></div>
     </section>
+
+<!-- Creating an expense -->
+    <div class="hide_background" id="create_expense">
+      <div class="create_expense_container">
+        <div class="x_button"></div>
+        <p>Draft Expense</p>
+        <div class="input_text_field">
+          <label for="title">Title:</label>
+          <input type="text" name="title" value="" placeholder="Description of the expense">
+        </div>
+        <div class="input_text_field">
+          <label for="title">Total Amount:</label>
+          <input type="text" name="title" value="" placeholder="00.00">
+        </div>
+        <table class="memmber_selection_container">
+         <tr class="member_selection_header">
+           <th>Member</th>
+           <th>Amount</th>
+         </tr>
+         <tr class="member_selection">
+           <td>Logan Cover</td>
+           <td><input type="number" value="" placeholder="00.00"></input></td>
+         </tr>
+       </table>
+        <div class="submit_button_container">
+          <button type="button" name="button" onclick="submit()">Create</button>
+        </div>
+      </div>
+    </div>
+
+  <!-- Expense Long View -->
+      <div class="hide_background" id="expense_long_view">
+        <div class="create_expense_container">
+          <div class="x_button"></div>
+          <div class="expense_info">
+            <p>Title: Something</p>
+            <p>Total: $15.00</p>
+          </div>
+          <table class="memmber_selection_container">
+           <tr class="member_selection_header">
+             <th>Member</th>
+             <th>Amount</th>
+           </tr>
+           <tr class="member_selection">
+             <td>Logan Cover</td>
+             <td>$5.00</td>
+           </tr>
+         </table>
+          <div class="submit_button_container">
+            <button type="button" name="button" onclick="submit()">Create</button>
+          </div>
+        </div>
+      </div>
+
+<!-- Expense Long View -->
+    <div class="hide_background" id="pending_expense">
+      <div class="create_expense_container">
+        <div class="x_button"></div>
+        <div class="expense_info">
+          <p>Title: Something</p>
+          <p>Total: $15.00</p>
+        </div>
+        <table class="memmber_selection_container">
+         <tr class="member_selection_header">
+           <th>Member</th>
+           <th>Amount</th>
+         </tr>
+         <tr class="member_selection">
+           <td>Logan Cover</td>
+           <td>$5.00</td>
+         </tr>
+       </table>
+        <div class="submit_button_container">
+          <button type="button" name="button" onclick="submit()">Approve</button>
+          <button type="button" name="button" onclick="submit()">Deny</button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
