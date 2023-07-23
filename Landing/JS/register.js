@@ -15,20 +15,13 @@ async function submit() {
   if (buttonLock) {
     lockButton();
     const values = collectInfo();
-    const format = {
-      fname: values[0],
-      lname: values[1],
-      username: values[2],
-      password: values[3],
-      rpassword: values[4]
-    }
-    console.log(format);
+    console.log(values);
 
-    for (let field in format) {
-      if (format[field].trim() == "") {
+    for (let field of values) {
+      if (field.trim() == "") {
         unlockButton();
         return {
-          status: 0,
+          completed: 0,
           error: "empty",
           info: 0
         }
@@ -38,19 +31,19 @@ async function submit() {
 
     //checking on password strength
     //TODO: password strength
-    if ( format.password !== format.rpassword) {
+    if (values[3] !== values[4]) {
       unlockButton();
       return {
-        status: 0,
+        completed: 0,
         error: "passwords don't match",
         info: 0
       }
     }
 
     //API call
-    const result = await callApi("register", format);
-
-    if (result.status) {
+    const result = await register(values[0], values[1], values[2], values[3]);
+    console.log(result);
+    if (result.completed && result.success) {
       redirect("./index.html");
     } else {
       failure();

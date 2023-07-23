@@ -11,21 +11,17 @@ async function submit() {
   if (buttonLock) {
     lockButton();
     const values = collectInfo();
-    const format = {
-      username: values[0],
-      password: values[1]
-    }
+    console.log(values);
+    const result = await testLoginUP(values[0], values[1]);
+    console.log(result);
 
-    console.log(format);
-
-    //API call
-    const result = await callApi("login", format);
-
-    if (result.status) {
-      redirect("../Home/");
+    if (result.completed && result.success) { //no errors and worked
+      redirect("/Home/");
+      return;
     } else {
-      failure();
+      console.log("gaah");
     }
+
     unlockButton();
   }
 }

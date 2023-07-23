@@ -1,3 +1,5 @@
+const url = "http://localhost:80";
+
 function redirect(page) {
   window.location.href = page;
 }
@@ -18,53 +20,77 @@ function isButtonLocked() {
   return buttonLock;
 }
 
-//acts as a wrapper for error logging, exception handling, and return formats
-async function callApi(apiName, infoObject) {
 
-  //switch on which api to call
-  let result;
-  switch (apiName) {
-    case "login":
-      result = await testLogin(infoObject.username, infoObject.password);
-      return result;
-      break;
-    case "register":
-      result = await testRegister(infoObject.fname, infoObject.lname,
-        infoObject.username, infoObject.password);
-      return result;
-      break;
-    default:
+// call to test for a valid login using a username and password
+async function testLoginUP(username, password) {
+  const request = JSON.stringify({
+    username: username,
+    password: password
+  });
+  const options = {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "application/json",
+      "function": "login"
+    },
+    body: request
+  };
+
+  try {
+    const result = await fetch(url, options);
+    if (result.status == 200) {
+      const data = await result.text();
+      return data;
+    } else {
       return {
-        status: 0,
-        error: "could not find API: " + apiName,
-        info: []
+        completed: 0,
+        reason: result.statusText
       };
+    }
+  } catch (e) {
+    console.log(e);
+    return {
+      completed: 0,
+      reason: e
+    };
   }
 }
 
 
-async function testLogin(username, password) {
-  //make API call
+// call to test for a valid login using a username and password
+async function register(username, fname, lname, password) {
+  const request = JSON.stringify({
+    username: username,
+    name: fname + " " + lname,
+    password: password
+  });
+  const options = {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "application/json",
+      "function": "login"
+    },
+    body: request
+  };
 
-  //test data for now
-
-  const response = {
-    status: 1,
-    error: "",
-    info: 0
+  try {
+    const result = await fetch(url, options);
+    if (result.status == 200) {
+      const data = await result.text();
+      return data;
+    } else {
+      return {
+        completed: 0,
+        reason: result.statusText
+      };
+    }
+  } catch (e) {
+    console.log(e);
+    return {
+      completed: 0,
+      reason: e
+    };
   }
-  return response;
-}
-
-async function testRegister(firstName, lastName, username, password) {
-  //make API call
-
-  //test data for now
-
-  const response = {
-    status: 1,
-    error: "",
-    info: 0
-  }
-  return response;
 }
