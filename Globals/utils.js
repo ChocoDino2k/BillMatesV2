@@ -2,6 +2,10 @@ function redirect(page) {
   window.location.href = page;
 }
 
+function closeContainer(container, className) {
+  container.parentNode.parentNode.classList = className + " hidden";
+}
+
 //prevent user from making multiple api calls before another has finished
 var buttonLock = 1;
 function lockButton() {

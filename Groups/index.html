@@ -71,14 +71,14 @@
       </div>
 
 
-      <div class="footer_div"><a href="/Home/"><img src="/Globals/billmates_logo_person_trans.png" alt=""></a></div>
+      <a href="/Home/"><div class="footer_div"><img src="/Globals/billmates_logo_person_trans.png" alt=""></div></a>
       <div class="footer_div" id="plus_button"></div>
     </section>
 
 <!-- Creating an expense -->
-    <div class="hide_background" id="create_expense">
+    <div class="hide_background hidden" id="create_expense">
       <div class="create_expense_container">
-        <div class="x_button"></div>
+        <div class="x_button" onclick="closeContainer(this, 'hide_background')"></div>
         <p>Draft Expense</p>
         <div class="input_text_field">
           <label for="title">Title:</label>
@@ -105,9 +105,9 @@
     </div>
 
   <!-- Expense Long View -->
-      <div class="hide_background" id="expense_long_view">
+      <div class="hide_background hidden" id="expense_long_view">
         <div class="create_expense_container">
-          <div class="x_button"></div>
+          <div class="x_button" onclick="closeContainer(this, 'hide_background')"></div>
           <div class="expense_info">
             <p>Title: Something</p>
             <p>Total: $15.00</p>
@@ -129,9 +129,9 @@
       </div>
 
 <!-- Expense Long View -->
-    <div class="hide_background" id="pending_expense">
+    <div class="hide_background hidden" id="pending_expense">
       <div class="create_expense_container">
-        <div class="x_button"></div>
+        <div class="x_button" onclick="closeContainer(this, 'hide_background')"></div>
         <div class="expense_info">
           <p>Title: Something</p>
           <p>Total: $15.00</p>
