@@ -154,11 +154,12 @@ int main() {
 			if (numBytesRead == 0) {
 				quit = 1;
 			} else if ( readAllHeaders ) {
-				char contentLength[200]; //way larger than need be
+				//char contentLength[200]; //way larger than need be
 				//char sawCarriageReturn = 0;
 				int j = 0;
 				//printf("size of headers: %d\n", headersSize);
 				while ( j < headersSize ) {
+					/*
 					strncpy(contentLength, buffer + j, 15);
 					contentLength[15] = '\0';
 					//printf("%s\n", contentLength);
@@ -173,6 +174,8 @@ int main() {
 						j += jump;
 						//printf("jumped %d characters\n", jump);
 					}
+					*/
+					printf("%c", *(buffer + j) );
 				}
 			}
 		}
