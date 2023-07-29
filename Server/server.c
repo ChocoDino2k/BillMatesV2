@@ -129,6 +129,7 @@ int main() {
 			//check if read all headers
 			int i = totalBytesRead; 
 			printf("total num of bytes: %d\n", i);
+			printf("%s\n", buffer);
 			while ( i > 3 ) {
 				if (
 				buffer[i - 4] == '\r' && buffer[i - 3] == '\n' &&
