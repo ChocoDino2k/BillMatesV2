@@ -101,8 +101,8 @@ int main() {
 		struct sockaddr_in clientIPAddress;
 		int alen = sizeof( clientIPAddress );
 		int requestSocket = accept( server, 
-			(struct sockaddr *)&clientIPAddress,
-			(socklen_t *)&alen );
+				(struct sockaddr *)&clientIPAddress,
+				(socklen_t *)&alen );
 		if ( requestSocket < 0 ) {
 			perror("accept");
 			exit(1);
@@ -116,74 +116,66 @@ int main() {
 		char quit = 0;
 		char readAllHeaders = 0;
 		unsigned int headersSize = 0;
-		//unsigned int bodySize = 0;
+		unsigned int bodySize = 0;
 		while (!quit) {
 			numBytesRead = read( requestSocket, buffer + totalBytesRead, bufferSize / 2);
 			totalBytesRead += numBytesRead;
-			//printf("%d\n", numBytesRead);
+
 			if ( totalBytesRead == bufferSize ) {
 				bufferSize *= 2;
 				buffer = realloc( buffer, bufferSize);
 			}
-			//printf("%s\n", buffer);
-			//printf("%d %d %d %d\n", buffer[totalBytesRead - 4], buffer[totalBytesRead - 3],
+
+
 			//buffer[totalBytesRead - 2], buffer[totalBytesRead - 1] );
 
 			//check if read all headers
 			int i = totalBytesRead; 
-			//printf("total num of bytes: %d\n", i);
-			//printf("%s\n", buffer);
+
+
 			while ( !readAllHeaders & (i > 3) ) {
 				if (
-				buffer[i - 4] == '\r' && buffer[i - 3] == '\n' &&
-				buffer[i - 2] == '\r' && buffer[i - 1] == '\n'
-				) {
+						buffer[i - 4] == '\r' && buffer[i - 3] == '\n' &&
+						buffer[i - 2] == '\r' && buffer[i - 1] == '\n'
+					 ) {
 					readAllHeaders = 1;
 					headersSize = i - 4;
-				}
-				if (buffer[i] == '\r') {
-					//printf("carriage return\n");
-				} else if (buffer[i] == '\n') {
-					//printf("line feed\n");
-				} else {
-					//printf("%c", buffer[i]);
+
+					int j = 0;
+					char contentLength[100];
+					while ( j < headersSize ) {
+						if ( strncmp( (buffer + j), "Content-Length:", 15 ) == 0 ) {
+							j += 16;
+							int numDigits = charToJump( buffer + j, '\r' ) - 1;
+							strncpy(contentLength, buffer + j, numDigits);
+							contentLength[numDigits] = '\0';
+							bodySize = atoi(contentLength);
+							j = headersSize; //quit the loop
+						} else {
+							j += charToJump(buffer + j, '\n');
+						}
+					}
 				}
 				i--;
 			}
 
-			if (numBytesRead == 0) {
+			if (numBytesRead == 0 || headersSize + bodySize == totalBytesRead) {
 				quit = 1;
-			} else if ( readAllHeaders ) {
-				//char contentLength[200]; //way larger than need be
-				//char sawCarriageReturn = 0;
-				int j = 0;
-				char contentLength[100];
-				//printf("size of headers: %d\n", headersSize);
-				while ( j < headersSize ) {
-					if ( strncmp( (buffer + j), "Content-Length:", 15 ) == 0 ) {
-						j += 16;
-						int numDigits = charToJump( buffer + j, '\r' ) - 1;
-						strncpy(contentLength, buffer + j, numDigits);
-						contentLength[numDigits] = '\0';
-						printf("Length of the body: %s\n", contentLength);
-					}
-					j += charToJump(buffer + j, '\n');
-				}
 			}
+
 		}
 		printf("finished\n");
 		printf("size of headers: %d\n", headersSize);
 	}
 
-	
+
 	return 0;
 }
 
 
 int charToJump(char * string, char character) {
 	unsigned int i = 0;
-	while ( *(string + i) != character) {
-		//printf("%c", *(string + i) );
+	while ( *(string + i) != character) {	
 		i++;
 	}
 	return i + 1;
