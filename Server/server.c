@@ -114,9 +114,14 @@ int main() {
 		do {
 			numBytesRead = read( requestSocket, &byteRead, 1 );
 			if ( numBytesRead > 0 ) {
-				printf("%c", byteRead);
+				if ( byteRead == '\r' ) {
+					printf("carriage return\n");					
+				} else if ( byteRead == '\n' ) {
+					printf("line feed\n");
+				} else {
+					printf("%c", byteRead);
+				}
 			}
-			printf("%d", numBytesRead);
 		} while( numBytesRead > 0);
 		break;
 	}
