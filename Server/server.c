@@ -130,8 +130,8 @@ int main() {
 			printf("%d\n", i);
 			while ( i > 3 ) {
 				if (
-				buffer[i - 4] != '\r' && buffer[i - 3] != '\n' &&
-				buffer[i - 2] != '\r' && buffer[i - 1] != '\n'
+				buffer[i - 4] == '\r' && buffer[i - 3] == '\n' &&
+				buffer[i - 2] == '\r' && buffer[i - 1] == '\n'
 				) {
 					quit = 1;
 					break;
@@ -146,6 +146,7 @@ int main() {
 				i--;
 			}
 		}
+		printf("finished\n");
 	}
 
 	
