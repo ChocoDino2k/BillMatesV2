@@ -119,7 +119,8 @@ int main() {
 			totalBytesRead += numBytesRead;
 			//printf("%d\n", numBytesRead);
 			if ( totalBytesRead == bufferSize ) {
-				buffer = realloc( buffer, bufferSize / 2 );
+				bufferSize *= 2;
+				buffer = realloc( buffer, bufferSize);
 			}
 			//printf("%s\n", buffer);
 			//printf("%d %d %d %d\n", buffer[totalBytesRead - 4], buffer[totalBytesRead - 3],
