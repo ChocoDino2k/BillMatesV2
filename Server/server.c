@@ -163,7 +163,7 @@ int main() {
 				while ( j < headersSize ) {
 					strncpy(header, buffer + j, 15);
 					printf("%s\n", header);
-					j++;
+					j += charToJump(buffer + j, '\n');
 				}
 			}
 		}
