@@ -115,7 +115,7 @@ int main() {
 		int totalBytesRead = 0;
 		short quit = 0;
 		while (!quit) {
-			numBytesRead = read( requestSocket, buffer, bufferSize / 2);
+			numBytesRead = read( requestSocket, buffer, 1);
 			totalBytesRead += numBytesRead;
 			printf("%d\n", numBytesRead);
 			if ( totalBytesRead == sizeof(buffer) ) {
