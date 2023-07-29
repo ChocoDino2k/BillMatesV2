@@ -159,11 +159,13 @@ int main() {
 				int j = 0;
 				printf("size of headers: %d\n", headersSize);
 				while ( j < headersSize ) {
-					//strncpy(contentLength, buffer, 15);
+					strncpy(contentLength, buffer + j, 15);
+					contentLength[15] = '\0';
+					printf("%s\n", contentLength);
 					if ( strncmp(buffer + j, "Content-Length:", 15) == 0) {
 						j += 15;
-						strncpy(contentLength, buffer + j, charToJump(buffer + j, '\r') );
-						contentLength[ charToJump(buffer + j, '\r') ] = '\0';
+						strncpy(contentLength, buffer + j, charToJump(buffer + j, '\r') - 1 );
+						contentLength[ charToJump(buffer + j, '\r') - 1 ] = '\0';
 						printf("%s\n", contentLength);
 						break;
 					} else {
