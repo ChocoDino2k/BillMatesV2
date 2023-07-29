@@ -118,8 +118,8 @@ int main() {
 			numBytesRead = read( requestSocket, buffer, 1);
 			totalBytesRead += numBytesRead;
 			//printf("%d\n", numBytesRead);
-			if ( totalBytesRead == sizeof(buffer) ) {
-				buffer = realloc( buffer, sizeof(buffer) * 2 );
+			if ( totalBytesRead == bufferSize ) {
+				buffer = realloc( buffer, bufferSize / 2 );
 			}
 			//printf("%s\n", buffer);
 			//printf("%d %d %d %d\n", buffer[totalBytesRead - 4], buffer[totalBytesRead - 3],
@@ -127,7 +127,7 @@ int main() {
 
 			//check if read all headers
 			int i = totalBytesRead; 
-			printf("%d\n", i);
+			printf("total num of bytes: %d\n", i);
 			while ( i > 3 ) {
 				if (
 				buffer[i - 4] == '\r' && buffer[i - 3] == '\n' &&
