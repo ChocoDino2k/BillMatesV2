@@ -18,7 +18,7 @@ void setupInterruptHandlers();
 void sigInterrupt(int);
 
 #define MAXQUEUE 10
-#define PORT 80
+#define PORT 1025
 
 void setupInterruptHandlers() {
 	struct sigaction signalAction;
@@ -77,7 +77,7 @@ int createServerSocket() {
 
 	//Binding the socket
 	assert( bind( serverSock, (struct sockaddr *) &serverIPAddr,
-				sizeof( serverIPAddr) ) != 0);
+				sizeof( serverIPAddr) ) == 0);
 
 	//display the hostname:port of the server
 	char hostname[1024];
