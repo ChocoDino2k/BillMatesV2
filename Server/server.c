@@ -109,20 +109,20 @@ int main() {
 		}
 
 		//Process the request
+		unsigned int bufferSize = 2048;
+		char * buffer = (char *)malloc( bufferSize );
 		int numBytesRead = 0;
-		char byteRead;
+		int totalBytesRead = 0;
 		do {
-			numBytesRead = read( requestSocket, &byteRead, 1 );
-			if ( numBytesRead > 0 ) {
-				if ( byteRead == '\r' ) {
-					printf("carriage return\n");					
-				} else if ( byteRead == '\n' ) {
-					printf("line feed\n");
-				} else {
-					printf("%c", byteRead);
-				}
+			numBytesRead = read( requestSocket, &buffer, bufferSize / 2);
+			totalBytesRead += numBytesRead;
+			if ( totalBytesRead == sizeof(buffer) ) {
+				buffer = realloc( buffer, sizeof(buffer) * 2 );
 			}
-		} while( numBytesRead > 0);
+		} while(
+			buffer[totalBytesRead - 4] != '\r' && buffer[totalBytesRead - 3] != '\n' &&
+			buffer[totalBytesRead - 2] != '\r' && buffer[totalBytesRead -1 ] != '\n'
+		);
 		break;
 	}
 
