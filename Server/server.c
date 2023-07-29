@@ -16,7 +16,7 @@
 int createServerSocket();
 void setupInterruptHandlers();
 void sigInterrupt(int);
-int charUntil( char*, char);
+int charToJump( char*, char);
 #define MAXQUEUE 10
 #define PORT 1025
 
@@ -162,12 +162,12 @@ int main() {
 					//strncpy(contentLength, buffer, 15);
 					if ( strncmp(buffer + j, "Content-Length:", 15) == 0) {
 						j += 15;
-						strncpy(contentLength, buffer + j, charUntil(buffer + j, '\r') );
-						contentLength[ charUntil(buffer + j, '\r') ] = '\0';
+						strncpy(contentLength, buffer + j, charToJump(buffer + j, '\r') );
+						contentLength[ charToJump(buffer + j, '\r') ] = '\0';
 						printf("%s\n", contentLength);
 						break;
 					} else {
-						int jump = charUntil(buffer + j, '\n');
+						int jump = charToJump(buffer + j, '\n');
 						j += jump;
 						printf("jumped %d characters\n", jump);
 					}
@@ -183,11 +183,11 @@ int main() {
 }
 
 
-int charUntil(char * string, char character) {
+int charToJump(char * string, char character) {
 	unsigned int i = 0;
 	while ( *(string + i) != character) {
 		printf("%c", *(string + i) );
 		i++;
 	}
-	return i;
+	return i + 1;
 }
