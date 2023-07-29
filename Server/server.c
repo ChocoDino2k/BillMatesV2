@@ -98,18 +98,20 @@ int main() {
 
 	int server = createServerSocket();
 	while ( 1 ) {
-		struct sockaddr_in clientIPAddress;
-		int alen = sizeof( clientIPAddress );
+		struct sockaddr_in clientIPAddr;
+		int alen = sizeof( clientIPAddr );
 		int requestSocket = accept( server, 
-				(struct sockaddr *)&clientIPAddress,
+				(struct sockaddr *)&clientIPAddr,
 				(socklen_t *)&alen );
 		if ( requestSocket < 0 ) {
 			perror("accept");
 			exit(1);
 		}
-
+		char clientIP[INET_ADDRSTRLEN];
+		inet_ntop( AF_INET, &clientIPAddr, clientIP, INET_ADDRSTRLEN );
+		printf("ACCEPTED CONNECTION FROM: %s\n", clientIP );
 		//Process the request
-		unsigned int bufferSize = 64;
+		unsigned int bufferSize = 1024; //no significant reason for 1024
 		char * buffer = (char *)malloc( bufferSize );
 		int numBytesRead = 0;
 		int totalBytesRead = 0;
@@ -120,19 +122,13 @@ int main() {
 		while (!quit) {
 			numBytesRead = read( requestSocket, buffer + totalBytesRead, bufferSize / 2);
 			totalBytesRead += numBytesRead;
-
 			if ( totalBytesRead == bufferSize ) {
 				bufferSize *= 2;
 				buffer = realloc( buffer, bufferSize);
 			}
 
-
-			//buffer[totalBytesRead - 2], buffer[totalBytesRead - 1] );
-
 			//check if read all headers
 			int i = totalBytesRead; 
-
-
 			while ( !readAllHeaders & (i > 3) ) {
 				if (
 						buffer[i - 4] == '\r' && buffer[i - 3] == '\n' &&
@@ -140,7 +136,7 @@ int main() {
 					 ) {
 					readAllHeaders = 1;
 					headersSize = i - 4;
-
+					//get the size of the body of the request -> 0 means GET request
 					int j = 0;
 					char contentLength[100];
 					while ( j < headersSize ) {
@@ -168,8 +164,6 @@ int main() {
 			}
 
 		}
-		printf("finished\n");
-		printf("size of headers: %d\n", headersSize);
 	}
 
 
