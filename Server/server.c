@@ -147,6 +147,9 @@ int main() {
 				}
 				i--;
 			}
+			if (numBytesRead == 0) {
+				quit = 1;
+			}
 		}
 		printf("finished\n");
 	}
