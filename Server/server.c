@@ -130,6 +130,7 @@ int main() {
 			int i = totalBytesRead; 
 			printf("total num of bytes: %d\n", i);
 			printf("%s\n", buffer);
+			/*
 			while ( i > 3 ) {
 				if (
 				buffer[i - 4] == '\r' && buffer[i - 3] == '\n' &&
@@ -147,6 +148,7 @@ int main() {
 				}
 				i--;
 			}
+			*/
 			if (numBytesRead == 0) {
 				quit = 1;
 			}
