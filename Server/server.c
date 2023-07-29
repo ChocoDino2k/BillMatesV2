@@ -159,7 +159,11 @@ int main() {
 				i--;
 			}
 
-			if (numBytesRead == 0 || headersSize + bodySize == totalBytesRead) {
+			printf("size of headers: %d\n", headersSize);
+			printf("size of body: %d\n", bodySize);
+			printf("total bytes read: %d\n", totalBytesRead);
+
+			if (numBytesRead == 0 || headersSize + bodySize + 4 == totalBytesRead) {
 				quit = 1;
 			}
 
