@@ -96,7 +96,30 @@ int createServerSocket() {
 int main() {
 	printf("hello world\n");
 
-	createServerSocket();
+	int server = createServerSocket();
+	while ( 1 ) {
+		struct sockaddr_in clientIPAddress;
+		int alen = sizeof( clientIPAddress );
+		int requestSocket = accept( server, 
+			(struct sockaddr *)&clientIPAddress,
+			(socklen_t *)&alen );
+		if ( requestSocket < 0 ) {
+			perror("accept");
+			exit(1);
+		}
+
+		//Process the request
+		int numBytesRead = 0;
+		char byteRead;
+		do {
+			numBytesRead = read( requestSocket, &byteRead, 1 );
+			if ( numBytesRead > 0 ) {
+				printf("%c", byteRead);
+			}
+		} while( numBytesRead > 0);
+		break;
+	}
+
 	
 	return 0;
 }
