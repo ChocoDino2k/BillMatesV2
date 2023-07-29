@@ -113,9 +113,11 @@ int main() {
 		char * buffer = (char *)malloc( bufferSize );
 		int numBytesRead = 0;
 		int totalBytesRead = 0;
-		short quit = 0;
+		char quit = 0;
+		char readAllHeaders = 0;
+		int headersSize = 0;
 		while (!quit) {
-			numBytesRead = read( requestSocket, buffer + totalBytesRead, 1);
+			numBytesRead = read( requestSocket, buffer + totalBytesRead, bufferSize);
 			totalBytesRead += numBytesRead;
 			//printf("%d\n", numBytesRead);
 			if ( totalBytesRead == bufferSize ) {
@@ -130,14 +132,13 @@ int main() {
 			int i = totalBytesRead; 
 			printf("total num of bytes: %d\n", i);
 			printf("%s\n", buffer);
-			/*
-			while ( i > 3 ) {
+			while ( !readAllHeaders & (i > 3) ) {
 				if (
 				buffer[i - 4] == '\r' && buffer[i - 3] == '\n' &&
 				buffer[i - 2] == '\r' && buffer[i - 1] == '\n'
 				) {
-					quit = 1;
-					break;
+					readAllHeaders = 1;
+					headersSize = i;
 				}
 				if (buffer[i] == '\r') {
 					printf("carriage return\n");
@@ -148,12 +149,13 @@ int main() {
 				}
 				i--;
 			}
-			*/
+
 			if (numBytesRead == 0) {
 				quit = 1;
 			}
 		}
 		printf("finished\n");
+		printf("size of headers: %d\n", headersSize);
 	}
 
 	
