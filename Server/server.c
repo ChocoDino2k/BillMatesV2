@@ -163,10 +163,10 @@ int main() {
 					contentLength[15] = '\0';
 					printf("%s\n", contentLength);
 					if ( strncmp(buffer + j, "Content-Length:", 15) == 0) {
-						j += 15;
 						strncpy(contentLength, buffer + j, charToJump(buffer + j, '\r') - 1 );
 						contentLength[ charToJump(buffer + j, '\r') - 1 ] = '\0';
-						//printf("%s\n", contentLength);
+						printf("found the content length\n");
+						printf("%s\n", contentLength);
 						break;
 					} else {
 						int jump = charToJump(buffer + j, '\n');
