@@ -179,7 +179,7 @@ int main() {
 int charToJump(char * string, char character) {
 	unsigned int i = 0;
 	while ( *(string + i) != character) {
-		printf("%c", *(string + i) );
+		//printf("%c", *(string + i) );
 		i++;
 	}
 	return i + 1;
