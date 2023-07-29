@@ -139,6 +139,8 @@ int main() {
 					printf("carriage return\n");
 				} else if (buffer[i] == '\n') {
 					printf("line feed\n");
+				} else {
+					printf("%c", buffer[i]);
 				}
 				i--;
 			}
