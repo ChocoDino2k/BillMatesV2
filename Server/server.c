@@ -157,6 +157,7 @@ int main() {
 				char contentLength[200]; //way larger than need be
 				//char sawCarriageReturn = 0;
 				int j = 0;
+				printf("size of headers: %d\n", headersSize);
 				while ( j < headersSize ) {
 					//strncpy(contentLength, buffer, 15);
 					if ( strncmp(buffer + j, "Content-Length:", 15) == 0) {
@@ -164,8 +165,11 @@ int main() {
 						strncpy(contentLength, buffer + j, charUntil(buffer + j, '\r') );
 						contentLength[ charUntil(buffer + j, '\r') ] = '\0';
 						printf("%s\n", contentLength);
+						break;
 					} else {
-						j += charUntil(buffer + j, '\n');
+						int jump = charUntil(buffer + j, '\n');
+						j += jump;
+						printf("jumped %d characters\n", jump);
 					}
 				}
 			}
