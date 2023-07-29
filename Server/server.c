@@ -109,7 +109,7 @@ int main() {
 		}
 
 		//Process the request
-		unsigned int bufferSize = 2048;
+		unsigned int bufferSize = 64;
 		char * buffer = (char *)malloc( bufferSize );
 		int numBytesRead = 0;
 		int totalBytesRead = 0;
