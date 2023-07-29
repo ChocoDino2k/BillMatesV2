@@ -1,4 +1,4 @@
-const url = "http://localhost:80";
+const url = "http://127.0.0.1:1025";
 
 function redirect(page) {
   window.location.href = page;
