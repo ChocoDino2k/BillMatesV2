@@ -135,6 +135,11 @@ int main() {
 					quit = 1;
 					break;
 				}
+				if (buffer[i] == '\r') {
+					printf("carriage return\n");
+				} else if (buffer[i] == '\n') {
+					printf("line feed\n");
+				}
 				i--;
 			}
 		}
