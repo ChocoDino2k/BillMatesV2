@@ -165,8 +165,8 @@ int main() {
 					if ( strncmp(buffer + j, "Content-Length:", 15) == 0) {
 						strncpy(contentLength, buffer + j, charToJump(buffer + j, '\r') - 1 );
 						contentLength[ charToJump(buffer + j, '\r') - 1 ] = '\0';
-						printf("found the content length\n");
-						printf("%s\n", contentLength);
+						//printf("found the content length\n");
+						//printf("%s\n", contentLength);
 						break;
 					} else {
 						int jump = charToJump(buffer + j, '\n');
