@@ -16,7 +16,7 @@
 int createServerSocket();
 void setupInterruptHandlers();
 void sigInterrupt(int);
-
+int charUntil( char*, char);
 #define MAXQUEUE 10
 #define PORT 1025
 
@@ -115,7 +115,8 @@ int main() {
 		int totalBytesRead = 0;
 		char quit = 0;
 		char readAllHeaders = 0;
-		int headersSize = 0;
+		unsigned int headersSize = 0;
+		//unsigned int bodySize = 0;
 		while (!quit) {
 			numBytesRead = read( requestSocket, buffer + totalBytesRead, bufferSize / 2);
 			totalBytesRead += numBytesRead;
@@ -152,6 +153,21 @@ int main() {
 
 			if (numBytesRead == 0) {
 				quit = 1;
+			} else if ( readAllHeaders ) {
+				char contentLength[200]; //way larger than need be
+				//char sawCarriageReturn = 0;
+				int j = 0;
+				while ( j < headersSize ) {
+					//strncpy(contentLength, buffer, 15);
+					if ( strncmp(buffer + j, "Content-Length:", 15) ) {
+						j += 15;
+						strncpy(contentLength, buffer + j, charUntil(buffer + j, '\r') );
+						contentLength[ charUntil(buffer + j, '\r') ] = '\0';
+						printf("%s\n", contentLength);
+					} else {
+						j += charUntil(buffer + j, '\n');
+					}
+				}
 			}
 		}
 		printf("finished\n");
@@ -160,4 +176,13 @@ int main() {
 
 	
 	return 0;
+}
+
+
+int charUntil(char * string, char character) {
+	unsigned int i = 0;
+	while ( *(string + i) != character) {
+		i++;
+	}
+	return i;
 }
