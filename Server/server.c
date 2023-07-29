@@ -114,8 +114,9 @@ int main() {
 		int numBytesRead = 0;
 		int totalBytesRead = 0;
 		do {
-			numBytesRead = read( requestSocket, &buffer, bufferSize / 2);
+			numBytesRead = read( requestSocket, buffer, bufferSize / 2);
 			totalBytesRead += numBytesRead;
+			printf("%d\n", numBytesRead);
 			if ( totalBytesRead == sizeof(buffer) ) {
 				buffer = realloc( buffer, sizeof(buffer) * 2 );
 			}
