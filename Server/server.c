@@ -131,8 +131,8 @@ int main() {
 
 			//check if read all headers
 			int i = totalBytesRead; 
-			printf("total num of bytes: %d\n", i);
-			printf("%s\n", buffer);
+			//printf("total num of bytes: %d\n", i);
+			//printf("%s\n", buffer);
 			while ( !readAllHeaders & (i > 3) ) {
 				if (
 				buffer[i - 4] == '\r' && buffer[i - 3] == '\n' &&
@@ -182,6 +182,7 @@ int main() {
 int charUntil(char * string, char character) {
 	unsigned int i = 0;
 	while ( *(string + i) != character) {
+		printf("%c", *(string + i) );
 		i++;
 	}
 	return i;
