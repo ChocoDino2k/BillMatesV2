@@ -131,15 +131,15 @@ int main() {
 
 			//check if read all headers
 			int i = totalBytesRead; 
-			printf("total num of bytes: %d\n", i);
-			printf("%s\n", buffer);
+			//printf("total num of bytes: %d\n", i);
+			//printf("%s\n", buffer);
 			while ( !readAllHeaders & (i > 3) ) {
 				if (
 				buffer[i - 4] == '\r' && buffer[i - 3] == '\n' &&
 				buffer[i - 2] == '\r' && buffer[i - 1] == '\n'
 				) {
 					readAllHeaders = 1;
-					headersSize = i;
+					headersSize = i - 4;
 				}
 				if (buffer[i] == '\r') {
 					//printf("carriage return\n");
@@ -157,12 +157,16 @@ int main() {
 				//char contentLength[200]; //way larger than need be
 				//char sawCarriageReturn = 0;
 				int j = 0;
-				char header[16];
-				header[15] = '\0';
+				char contentLength[100];
 				//printf("size of headers: %d\n", headersSize);
 				while ( j < headersSize ) {
-					strncpy(header, buffer + j, 15);
-					printf("%s\n", header);
+					if ( strncmp( (buffer + j), "Content-Length:", 15 ) == 0 ) {
+						j += 16;
+						int numDigits = charToJump( buffer + j, '\r' ) - 1;
+						strncpy(contentLength, buffer + j, numDigits);
+						contentLength[numDigits] = '\0';
+						printf("Length of the body: %s\n", contentLength);
+					}
 					j += charToJump(buffer + j, '\n');
 				}
 			}
