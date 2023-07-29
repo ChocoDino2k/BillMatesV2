@@ -120,6 +120,7 @@ int main() {
 			if ( totalBytesRead == sizeof(buffer) ) {
 				buffer = realloc( buffer, sizeof(buffer) * 2 );
 			}
+			printf("%s\n", buffer);
 			printf("%d %d %d %d\n", buffer[totalBytesRead - 4], buffer[totalBytesRead - 3],
 			buffer[totalBytesRead - 2], buffer[totalBytesRead - 1] );
 		} while(
