@@ -159,7 +159,7 @@ int main() {
 				int j = 0;
 				while ( j < headersSize ) {
 					//strncpy(contentLength, buffer, 15);
-					if ( strncmp(buffer + j, "Content-Length:", 15) ) {
+					if ( strncmp(buffer + j, "Content-Length:", 15) == 0) {
 						j += 15;
 						strncpy(contentLength, buffer + j, charUntil(buffer + j, '\r') );
 						contentLength[ charUntil(buffer + j, '\r') ] = '\0';
