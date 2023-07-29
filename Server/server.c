@@ -176,6 +176,7 @@ int main() {
 					}
 					*/
 					printf("%c", *(buffer + j) );
+					j++;
 				}
 			}
 		}
