@@ -116,6 +116,7 @@ int main() {
 			if ( numBytesRead > 0 ) {
 				printf("%c", byteRead);
 			}
+			printf("%d", numBytesRead);
 		} while( numBytesRead > 0);
 		break;
 	}
