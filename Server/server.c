@@ -142,11 +142,11 @@ int main() {
 					headersSize = i;
 				}
 				if (buffer[i] == '\r') {
-					printf("carriage return\n");
+					//printf("carriage return\n");
 				} else if (buffer[i] == '\n') {
-					printf("line feed\n");
+					//printf("line feed\n");
 				} else {
-					printf("%c", buffer[i]);
+					//printf("%c", buffer[i]);
 				}
 				i--;
 			}
