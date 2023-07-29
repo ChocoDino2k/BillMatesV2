@@ -166,7 +166,7 @@ int main() {
 						j += 15;
 						strncpy(contentLength, buffer + j, charToJump(buffer + j, '\r') - 1 );
 						contentLength[ charToJump(buffer + j, '\r') - 1 ] = '\0';
-						printf("%s\n", contentLength);
+						//printf("%s\n", contentLength);
 						break;
 					} else {
 						int jump = charToJump(buffer + j, '\n');
