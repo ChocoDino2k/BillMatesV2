@@ -115,55 +115,94 @@ int main() {
 		char * buffer = (char *)malloc( bufferSize );
 		int numBytesRead = 0;
 		int totalBytesRead = 0;
-		char quit = 0;
 		char readAllHeaders = 0;
+		char readAnotherRequest = 0;
 		unsigned int headersSize = 0;
 		unsigned int bodySize = 0;
-		while (!quit) {
-			numBytesRead = read( requestSocket, buffer + totalBytesRead, bufferSize / 2);
-			totalBytesRead += numBytesRead;
-			if ( totalBytesRead == bufferSize ) {
-				bufferSize *= 2;
-				buffer = realloc( buffer, bufferSize);
-			}
-
-			//check if read all headers
-			int i = totalBytesRead; 
-			while ( !readAllHeaders & (i > 3) ) {
-				if (
-						buffer[i - 4] == '\r' && buffer[i - 3] == '\n' &&
-						buffer[i - 2] == '\r' && buffer[i - 1] == '\n'
-					 ) {
-					readAllHeaders = 1;
-					headersSize = i - 4;
-					//get the size of the body of the request -> 0 means GET request
-					int j = 0;
-					char contentLength[100];
-					while ( j < headersSize ) {
-						if ( strncmp( (buffer + j), "Content-Length:", 15 ) == 0 ) {
-							j += 16;
-							int numDigits = charToJump( buffer + j, '\r' ) - 1;
-							strncpy(contentLength, buffer + j, numDigits);
-							contentLength[numDigits] = '\0';
-							bodySize = atoi(contentLength);
-							j = headersSize; //quit the loop
-						} else {
-							j += charToJump(buffer + j, '\n');
+		int num = 0;
+		do {
+			//read an entire request
+			memset(buffer, 0, bufferSize);
+			totalBytesRead = 0;
+			readAllHeaders = 0;
+			readAnotherRequest = 0;
+			bodySize = 0;
+			headersSize = 0;
+			do {
+				numBytesRead = read( requestSocket, buffer + totalBytesRead, bufferSize / 2);
+				totalBytesRead += numBytesRead;
+				if ( totalBytesRead == bufferSize ) {
+					bufferSize *= 2;
+					buffer = realloc( buffer, bufferSize);
+				}
+				//check if read all headers
+				int i = totalBytesRead; 
+				while ( !readAllHeaders & (i > 3) ) {
+					if (
+							buffer[i - 4] == '\r' && buffer[i - 3] == '\n' &&
+							buffer[i - 2] == '\r' && buffer[i - 1] == '\n'
+						 ) {
+						readAllHeaders = 1;
+						headersSize = i - 4;
+						//get the size of the body of the request -> 0 means GET request
+						int j = 0;
+						char contentLength[100];
+						while ( j < headersSize ) {
+							if ( strncmp( (buffer + j), "Content-Length:", 15 ) == 0 ) {
+								j += 16;
+								int numDigits = charToJump( buffer + j, '\r' ) - 1;
+								strncpy(contentLength, buffer + j, numDigits);
+								contentLength[numDigits] = '\0';
+								bodySize = atoi(contentLength);
+								j += numDigits + 2;
+							} else if ( strncmp( (buffer + j), "Connection: keep-alive", 22) == 0 ) {
+								readAnotherRequest = 1;
+								j += 24;
+							} else {
+								j += charToJump(buffer + j, '\n');
+							}
 						}
 					}
+					i--;
 				}
-				i--;
+
+				printf("size of headers: %d\n", headersSize + 4);
+				printf("size of body: %d\n", bodySize);
+				printf("total bytes read: %d\n", totalBytesRead);
+
+			} while( numBytesRead > 0 && (headersSize + bodySize + 4) < totalBytesRead );
+			printf("%s\n", buffer);
+			printf("SENDING RESPONSE\n");
+			char * response = 
+			"HTTP/1.1 200 OK\r\n"
+			"Access-Control-Allow-Origin: *\r\n"
+			"Access-Control-Allow-Methods: GET,HEAD,OPTIONS,POST\r\n"
+			"Access-Control-Allow-Headers: Access-Control-Allow-Headers,Origin,Accept,X-Requested-With,Content-Type,Access-Control-Request-Method,Access-Control-Request-Headers\r\n"
+			"Content-Length: 5\r\n"
+			"Connection: close\r\n"
+			"Keep-Alive: timeout=1000, max=10\r\n"
+			"\r\n"
+			"hello";
+			if ( strncmp(buffer, "OPTIONS", 7) == 0 ) {
+			response = "HTTP/1.1 200 OK\r\n"
+			"Access-Control-Allow-Origin: *\r\n"
+			"Access-Control-Allow-Methods: GET,HEAD,OPTIONS,POST\r\n"
+			"Access-Control-Allow-Headers: Access-Control-Allow-Headers,Origin,Accept,X-Requested-With,Content-Type,Access-Control-Request-Method,Access-Control-Request-Headers\r\n"
+			"Connection: keep-alive\r\n"
+			"Content-Length: 5\r\n"
+			"Keep-Alive: timeout=10000, max=10\r\n"
+			"\r\n"
+			"hello";
 			}
+			num = send( requestSocket, response, strlen(response), 0);
+			printf("DONE SENDING BYTES: %d/%ld\n", num, strlen(response));
 
-			printf("size of headers: %d\n", headersSize);
-			printf("size of body: %d\n", bodySize);
-			printf("total bytes read: %d\n", totalBytesRead);
+		} while( readAnotherRequest );
 
-			if (numBytesRead == 0 || headersSize + bodySize + 4 == totalBytesRead) {
-				quit = 1;
-			}
-
-		}
+		//sleep(1);
+		printf("Closing connection\n");
+		shutdown(requestSocket, SHUT_RDWR);
+		close(requestSocket);
 	}
 
 
