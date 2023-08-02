@@ -12,7 +12,25 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
+//I'm not a huge fan of this
+typedef enum {
+	UNKOWN,
+	LOGIN,
+	REGISTER
+} method_enm;
 
+typedef struct {
+	char* username;
+	char* password;
+} login_stc;
+
+typedef struct {
+	char* name;
+	char* password;
+} register_stc;
+
+
+void parseLogin(login_stc*, char*);
 int createServerSocket();
 void setupInterruptHandlers();
 void sigInterrupt(int);
@@ -64,6 +82,7 @@ int createServerSocket() {
 	serverIPAddr.sin_port = htons( (u_short) port);
 
 	//Allocate a socket to represent the server
+	//TODO: FREE MEMORY
 	int serverSock = socket( PF_INET, SOCK_STREAM, 0);
 	assert( serverSock >= 0);
 
@@ -194,15 +213,23 @@ int main() {
 			"\r\n"
 			"hello";
 			}
+			if ( strncmp(buffer, "POST", 4) == 0 ) {
+				login_stc login;
+				parseLogin(&login, buffer + headersSize + 4);
+				printf("username parsed: %s\n", login.username);
+				printf("password parsed: %s\n", login.password);
+			}
 			num = send( requestSocket, response, strlen(response), 0);
 			printf("DONE SENDING BYTES: %d/%ld\n", num, strlen(response));
 
 		} while( readAnotherRequest );
 
-		//sleep(1);
+		//Free memory and close down the processes
+		free( buffer );
+		buffer = NULL;
 		printf("Closing connection\n");
-		shutdown(requestSocket, SHUT_RDWR);
-		close(requestSocket);
+		shutdown( requestSocket, SHUT_RDWR );
+		close( requestSocket );
 	}
 
 
@@ -216,4 +243,9 @@ int charToJump(char * string, char character) {
 		i++;
 	}
 	return i + 1;
+}
+
+void parseLogin(login_stc* login, char* body) {
+	login->username = "my username";
+	login->password = "my password";
 }
