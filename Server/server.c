@@ -92,12 +92,10 @@ int createServerSocket() {
 }
 
 int main() {
-	//printf("hello world\n");
-	//printf("size: %ld\n", sizeof( proval) );
-	yyparse();
-	dumpJson(peek(), 0);
-	freeObj(peek());
-	exit(1);
+	//yyparse();
+	//dumpJson(peek(), 0);
+	//freeObj(peek());
+	//exit(1);
 	int server = createServerSocket();
 	while ( 1 ) {
 		struct sockaddr_in clientIPAddr;
