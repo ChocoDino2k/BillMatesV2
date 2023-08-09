@@ -44,5 +44,6 @@ int startObj();
 int endObj();
 void dumpJson(obj_stc*, int);
 int getPropertyIdx(obj_stc*, const char*);
-
+char* resize(char*, int*);
+char* encodeJson(obj_stc*);
 #endif

@@ -1174,7 +1174,7 @@ yyreduce:
 
   case 5: /* sub_object: OBJ_OPEN OBJ_CLOSE  */
 #line 33 "json_yacc.y"
-                             { ; }
+                             { (yyval.obj) = peek(); endObj(); }
 #line 1179 "y.tab.c"
     break;
 

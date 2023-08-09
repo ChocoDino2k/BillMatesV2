@@ -168,8 +168,9 @@ int main() {
 				printf("size of headers: %d\n", headersSize + 4);
 				printf("size of body: %d\n", bodySize);
 				printf("total bytes read: %d\n", totalBytesRead);
+				printf("num bytes read: %d\n", numBytesRead);
 
-			} while( numBytesRead > 0 && (headersSize + bodySize + 4) < totalBytesRead );
+			} while( numBytesRead > 0 && (headersSize + bodySize + 4) > totalBytesRead );
 			printf("%s\n", buffer);
 			printf("SENDING RESPONSE\n");
 			char * response = 
@@ -186,7 +187,7 @@ int main() {
 			response = "HTTP/1.1 200 OK\r\n"
 			"Access-Control-Allow-Origin: *\r\n"
 			"Access-Control-Allow-Methods: GET,HEAD,OPTIONS,POST\r\n"
-			"Access-Control-Allow-Headers: Access-Control-Allow-Headers,Origin,Accept,X-Requested-With,Content-Type,Access-Control-Request-Method,Access-Control-Request-Headers\r\n"
+			"Access-Control-Allow-Headers: Function,Access-Control-Allow-Headers,Origin,Accept,X-Requested-With,Content-Type,Access-Control-Request-Method,Access-Control-Request-Headers\r\n"
 			"Connection: keep-alive\r\n"
 			"Keep-Alive: timeout=10000, max=10\r\n"
 			"Content-Length: 1\r\n"
@@ -197,6 +198,9 @@ int main() {
 				yy_scan_string( buffer + headersSize + 4 );
 				yyparse();
 				yylex_destroy();
+
+				dumpJson(peek(), 0);
+				printf("%s\n", encodeJson(peek()));
 			}
 
 			num = send( requestSocket, response, strlen(response), 0);
@@ -210,7 +214,7 @@ int main() {
 		printf("Closing connection\n");
 		shutdown( requestSocket, SHUT_RDWR );
 		close( requestSocket );
-		freeObj(peek());
+		//freeObj(peek());
 	}
 
 

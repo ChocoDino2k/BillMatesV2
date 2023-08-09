@@ -30,7 +30,7 @@ object:
 	;
 sub_object:
 	OBJ_OPEN series OBJ_CLOSE { $$ = peek(); endObj(); }
-	| OBJ_OPEN OBJ_CLOSE { ; }
+	| OBJ_OPEN OBJ_CLOSE { $$ = peek(); endObj(); }
 	;
 series:
 	series COMMA property_value { ; }

@@ -22,7 +22,7 @@ clean:
 	rm -f run *.o lex.yy.c y.tab.*
 
 git-commit:
-	git add . >> .local.git.out || echo
+	git add .
 	git commit -a -m 'Automatic commit $(DATE)' >> .local.git.out || echo
 
 .PHONY: clean
