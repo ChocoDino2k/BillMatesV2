@@ -12,31 +12,10 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-//I'm not a huge fan of this
-typedef enum {
-	UNKOWN,
-	LOGIN,
-	REGISTER
-} method_enm;
+#include "json_util.h"
+#include "server.h"
 
-typedef struct {
-	char* username;
-	char* password;
-} login_stc;
-
-typedef struct {
-	char* name;
-	char* password;
-} register_stc;
-
-
-void parseLogin(login_stc*, char*);
-int createServerSocket();
-void setupInterruptHandlers();
-void sigInterrupt(int);
-int charToJump( char*, char);
-#define MAXQUEUE 10
-#define PORT 1025
+extern int yyparse();
 
 void setupInterruptHandlers() {
 	struct sigaction signalAction;
@@ -113,8 +92,12 @@ int createServerSocket() {
 }
 
 int main() {
-	printf("hello world\n");
-
+	//printf("hello world\n");
+	//printf("size: %ld\n", sizeof( proval) );
+	yyparse();
+	dumpJson(peek(), 0);
+	freeObj(peek());
+	exit(1);
 	int server = createServerSocket();
 	while ( 1 ) {
 		struct sockaddr_in clientIPAddr;
@@ -219,6 +202,7 @@ int main() {
 				printf("username parsed: %s\n", login.username);
 				printf("password parsed: %s\n", login.password);
 			}
+
 			num = send( requestSocket, response, strlen(response), 0);
 			printf("DONE SENDING BYTES: %d/%ld\n", num, strlen(response));
 

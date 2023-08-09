@@ -1,0 +1,312 @@
+[local 8bbfce1] Automatic commit 20230725-19:04:01
+ 3 files changed, 31 insertions(+)
+ delete mode 100644 Server/MakeFile
+ create mode 100644 Server/Makefile
+[local 3c46f34] Automatic commit 20230725-19:41:53
+ 1 file changed, 96 insertions(+)
+[local c553674] Automatic commit 20230729-12:57:46
+ 1 file changed, 24 insertions(+), 1 deletion(-)
+[local 5326b00] Automatic commit 20230729-13:00:34
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local ac927b8] Automatic commit 20230729-13:14:55
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[local 6ccd8d1] Automatic commit 20230729-13:39:36
+ 1 file changed, 1 insertion(+)
+[local ad216da] Automatic commit 20230729-13:41:25
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+[local 43c1fa1] Automatic commit 20230729-13:53:05
+ 1 file changed, 11 insertions(+), 11 deletions(-)
+[local 870446c] Automatic commit 20230729-13:54:34
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+[local e560ab4] Automatic commit 20230729-13:57:01
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+[local 0025d47] Automatic commit 20230729-13:57:25
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local 88dd338] Automatic commit 20230729-13:59:58
+ 1 file changed, 1 insertion(+)
+[local 8412c23] Automatic commit 20230729-14:16:10
+ 1 file changed, 16 insertions(+), 6 deletions(-)
+[local 472c1a0] Automatic commit 20230729-14:18:08
+ 1 file changed, 5 insertions(+)
+[local 7a3e3e0] Automatic commit 20230729-14:19:18
+ 1 file changed, 2 insertions(+)
+[local 8cb9f96] Automatic commit 20230729-14:20:09
+ 1 file changed, 1 insertion(+)
+[local 392b6f4] Automatic commit 20230729-14:21:38
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+[local 66fbdeb] Automatic commit 20230729-14:27:14
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local c4c3cc3] Automatic commit 20230729-14:29:41
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+[local 4c64ec8] Automatic commit 20230729-14:31:27
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[local 30d8ca2] Automatic commit 20230729-14:33:21
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+[local 0e20785] Automatic commit 20230729-14:33:59
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local bc84be5] Automatic commit 20230729-14:37:27
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local 006d891] Automatic commit 20230729-14:42:41
+ 1 file changed, 1 insertion(+)
+[local 04f6737] Automatic commit 20230729-14:43:47
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local 71b69a5] Automatic commit 20230729-14:44:48
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local 5c2ddc9] Automatic commit 20230729-14:46:46
+ 1 file changed, 3 insertions(+)
+[local d44222d] Automatic commit 20230729-14:47:25
+ 1 file changed, 2 insertions(+)
+[local 7402be7] Automatic commit 20230729-14:47:48
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local 4146206] Automatic commit 20230729-14:57:40
+ 1 file changed, 9 insertions(+), 7 deletions(-)
+[local 7fe1551] Automatic commit 20230729-14:58:42
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local 4719fad] Automatic commit 20230729-15:01:53
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local 84c0eb0] Automatic commit 20230729-15:25:43
+ 1 file changed, 27 insertions(+), 2 deletions(-)
+[local e9bfcd7] Automatic commit 20230729-15:28:52
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+[local 6cc3195] Automatic commit 20230729-15:29:54
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[local d5748ab] Automatic commit 20230729-15:30:10
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local 2258470] Automatic commit 20230729-15:32:28
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+[local 5d737fe] Automatic commit 20230729-15:38:05
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+[local 00dfe78] Automatic commit 20230729-15:41:10
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+[local 2528566] Automatic commit 20230729-15:42:21
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local cedc672] Automatic commit 20230729-15:44:30
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[local 5cbcc16] Automatic commit 20230729-15:46:38
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[local d3d97cf] Automatic commit 20230729-15:47:19
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[local 5f9a1b0] Automatic commit 20230729-15:49:49
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+[local 61941e0] Automatic commit 20230729-15:50:11
+ 1 file changed, 1 insertion(+)
+[local a234109] Automatic commit 20230729-15:52:33
+ 1 file changed, 4 insertions(+), 17 deletions(-)
+[local 2c977cc] Automatic commit 20230729-15:54:04
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local f67e095] Automatic commit 20230729-15:55:57
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local a3db3fa] Automatic commit 20230729-15:57:11
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[local eb8c86a] Automatic commit 20230729-16:06:13
+ 1 file changed, 11 insertions(+), 7 deletions(-)
+[local 01095d9] Automatic commit 20230729-16:22:18
+ 1 file changed, 30 insertions(+), 38 deletions(-)
+[local 0cc31f0] Automatic commit 20230729-16:23:31
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+[local a38f39b] Automatic commit 20230729-16:43:42
+ 1 file changed, 8 insertions(+), 14 deletions(-)
+[local 9ed9bc2] Automatic commit 20230729-17:14:44
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+[local 68d26e1] Automatic commit 20230729-17:15:31
+ 1 file changed, 1 insertion(+)
+[local 86c84fe] Automatic commit 20230729-17:17:10
+ 1 file changed, 3 insertions(+)
+[local 9d18765] Automatic commit 20230729-17:19:18
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local 9ba1bb9] Automatic commit 20230729-17:24:28
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local 7534e4d] Automatic commit 20230729-17:32:52
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local 60ae46b] Automatic commit 20230729-17:42:47
+ 1 file changed, 9 insertions(+), 6 deletions(-)
+[local f0e4ac5] Automatic commit 20230729-19:32:06
+ 1 file changed, 53 insertions(+), 46 deletions(-)
+[local 6a2ca6f] Automatic commit 20230729-19:33:03
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local d917f6a] Automatic commit 20230729-19:43:29
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local 79c0588] Automatic commit 20230729-19:45:11
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[local 37652ca] Automatic commit 20230729-19:47:29
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[local 307c5ef] Automatic commit 20230729-19:53:39
+ 1 file changed, 12 insertions(+), 2 deletions(-)
+[local 70a40a2] Automatic commit 20230729-20:02:17
+ 1 file changed, 2 insertions(+), 7 deletions(-)
+[local 846a2e0] Automatic commit 20230729-20:05:33
+ 1 file changed, 1 insertion(+)
+[local e9eba69] Automatic commit 20230729-20:07:37
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local 299c68e] Automatic commit 20230729-20:12:14
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local 547e8e3] Automatic commit 20230729-20:31:12
+ 1 file changed, 2 insertions(+)
+[local 54e9718] Automatic commit 20230729-20:35:46
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local eac469d] Automatic commit 20230729-20:37:20
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[local 8b03016] Automatic commit 20230729-20:41:11
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+[local d299a48] Automatic commit 20230729-20:44:23
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+[local 19050ad] Automatic commit 20230729-20:49:51
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[local 3bcc701] Automatic commit 20230729-20:52:44
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local a7012c1] Automatic commit 20230729-20:53:52
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[local 4eef1b3] Automatic commit 20230729-20:55:28
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[local c7a9ea0] Automatic commit 20230729-21:02:18
+ 1 file changed, 10 insertions(+), 3 deletions(-)
+[local 2e00dc1] Automatic commit 20230729-21:03:33
+ 1 file changed, 3 insertions(+)
+[local f8c152e] Automatic commit 20230729-21:04:39
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local b8ccabc] Automatic commit 20230729-21:05:57
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+[main 6b83ba5] Automatic commit 20230802-13:42:36
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+[main ccde77f] Automatic commit 20230802-14:18:18
+ 1 file changed, 29 insertions(+)
+On branch main
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	../.gitignore
+	.local.git.out
+	run
+
+nothing added to commit but untracked files present (use "git add" to track)
+On branch local
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	../.gitignore
+	.local.git.out
+	run
+
+nothing added to commit but untracked files present (use "git add" to track)
+[local d965adb] Automatic commit 20230805-15:36:11
+ 1 file changed, 28 insertions(+)
+[local 6c84e52] Automatic commit 20230805-15:36:41
+ 1 file changed, 2 insertions(+), 5 deletions(-)
+[local d74ed69] Automatic commit 20230805-15:37:08
+ 1 file changed, 1 insertion(+)
+[local 270cf66] Automatic commit 20230805-15:39:23
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+[local 2ba7830] Automatic commit 20230805-15:40:24
+ 1 file changed, 3 insertions(+), 10 deletions(-)
+[local 7cdeb4b] Automatic commit 20230805-15:41:35
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[local 548c57a] Automatic commit 20230805-15:44:47
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+[local a9d5db0] Automatic commit 20230805-15:45:34
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local 004cc04] Automatic commit 20230805-15:46:11
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local 4caa60a] Automatic commit 20230805-15:47:12
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local 69ec264] Automatic commit 20230805-16:05:07
+ 1 file changed, 9 insertions(+), 7 deletions(-)
+On branch local
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	../.gitignore
+	.local.git.out
+	run
+
+nothing added to commit but untracked files present (use "git add" to track)
+[local 6c3cc83] Automatic commit 20230807-17:41:46
+ 5 files changed, 3355 insertions(+), 6 deletions(-)
+ create mode 100644 Server/lex.yy.c
+ create mode 100644 Server/y.tab.c
+ create mode 100644 Server/y.tab.h
+[local 9942717] Automatic commit 20230807-17:58:51
+ 1 file changed, 84 insertions(+), 67 deletions(-)
+[local de566df] Automatic commit 20230807-17:59:35
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[local 3f5fafa] Automatic commit 20230807-19:16:23
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+[local 57ca797] Automatic commit 20230807-19:24:36
+ 3 files changed, 76 insertions(+), 47 deletions(-)
+[local 202745e] Automatic commit 20230807-19:30:19
+ 3 files changed, 39 insertions(+), 41 deletions(-)
+[local 59f5841] Automatic commit 20230807-19:30:32
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local b24722e] Automatic commit 20230807-19:32:46
+ 1 file changed, 13 insertions(+), 12 deletions(-)
+[local 3e23927] Automatic commit 20230807-19:45:57
+ 1 file changed, 15 insertions(+), 14 deletions(-)
+[local 3fddb56] Automatic commit 20230807-19:47:46
+ 1 file changed, 12 insertions(+), 14 deletions(-)
+On branch local
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	../.gitignore
+	.local.git.out
+	json_lexer.l
+	json_yacc.y
+	run
+	test
+
+nothing added to commit but untracked files present (use "git add" to track)
+[local d37a583] Automatic commit 20230808-09:50:38
+ 5 files changed, 183 insertions(+), 141 deletions(-)
+[local adbd685] Automatic commit 20230808-09:53:01
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local 409f07a] Automatic commit 20230808-09:54:37
+ 1 file changed, 1 insertion(+)
+[local 0d35057] Automatic commit 20230808-10:11:15
+ 4 files changed, 33 insertions(+), 7 deletions(-)
+[local 006efba] Automatic commit 20230808-10:20:09
+ 3 files changed, 90 insertions(+), 78 deletions(-)
+[local 42c645e] Automatic commit 20230808-10:20:38
+ 1 file changed, 2 insertions(+)
+[local 459ae54] Automatic commit 20230808-10:30:44
+ 4 files changed, 72 insertions(+), 78 deletions(-)
+[local d0bd574] Automatic commit 20230808-10:33:26
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local 2484f20] Automatic commit 20230808-10:34:10
+ 1 file changed, 1 insertion(+)
+[local 01849e0] Automatic commit 20230808-10:36:30
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local 5991ede] Automatic commit 20230808-10:36:52
+ 1 file changed, 1 deletion(-)
+[local 77e2474] Automatic commit 20230808-10:55:44
+ 3 files changed, 21 insertions(+), 57 deletions(-)
+[local 20ea2b4] Automatic commit 20230808-11:00:11
+ 1 file changed, 16 insertions(+), 14 deletions(-)
+[local fd3b4de] Automatic commit 20230808-11:00:29
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local 561af29] Automatic commit 20230808-11:01:31
+ 1 file changed, 15 insertions(+), 15 deletions(-)
+[local 6b2e32b] Automatic commit 20230808-11:02:22
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local 6a2827e] Automatic commit 20230808-11:02:50
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[local 331dccd] Automatic commit 20230808-11:22:00
+ 8 files changed, 160 insertions(+), 221 deletions(-)
+ create mode 100644 Server/json_util.c
+ copy Server/{server.h => json_util.h} (61%)
+ rewrite Server/server.h (61%)
+On branch local
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	../.gitignore
+	.local.git.out
+	json_lexer.l
+	json_yacc.y
+	run
+
+nothing added to commit but untracked files present (use "git add" to track)
+[local d048258] Automatic commit 20230808-18:09:33
+ 2 files changed, 26 insertions(+), 11 deletions(-)
+[local c27062a] Automatic commit 20230808-18:11:09
+ 3 files changed, 5 insertions(+), 4 deletions(-)
+[local c3ac77e] Automatic commit 20230808-18:12:21
+ 1 file changed, 1 insertion(+)
+[local 2e6f949] Automatic commit 20230808-20:17:04
+ 3 files changed, 48 insertions(+), 28 deletions(-)

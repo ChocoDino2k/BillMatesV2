@@ -1,5 +1,5 @@
-CFLAGS = -Wall -Werror -g -pthread
-SOURCES = server.c
+CFLAGS = -g -pthread -Wall -Werror
+SOURCES = server.c json_util.c lex.yy.c y.tab.c
 OBJECTS = $(SOURCES:.c=.o)
 HFILES = myserver.h
 EXEC = run
@@ -12,8 +12,14 @@ $(EXEC): $(OBJECTS)
 $(OBJECTS): $(SOURCES)
 	gcc $(CFLAGS) -c $^
 
+lex.yy.c: y.tab.c json_lexer.l
+	flex json_lexer.l
+
+y.tab.c: json_yacc.y
+	yacc -d json_yacc.y
+
 clean:
-	rm -f run *.o
+	rm -f run *.o lex.yy.c y.tab.*
 
 git-commit:
 	git add *.c *.h Makefile >> .local.git.out || echo
