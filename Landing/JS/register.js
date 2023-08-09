@@ -11,6 +11,25 @@ function collectInfo() {
   return inputs;
 }
 
+async function register(fname, lname, username, password) {
+  const payload = JSON.stringify(
+    {
+      name: fname + " " + lname,
+      username: username,
+      password: password
+    }
+  );
+  postOptions.body = payload;
+  postOptions.headers.Function = "register";
+
+  const result = await fetch(url, postOptions);
+  if ( result.status != 200 ) {
+    return defaultResponse;
+  }
+  const response = await result.text();
+  return response;
+}
+
 async function submit() {
   if (buttonLock) {
     lockButton();
@@ -20,11 +39,7 @@ async function submit() {
     for (let field of values) {
       if (field.trim() == "") {
         unlockButton();
-        return {
-          completed: 0,
-          error: "empty",
-          info: 0
-        }
+        return defaultResponse;
       }
     }
 
@@ -33,19 +48,16 @@ async function submit() {
     //TODO: password strength
     if (values[3] !== values[4]) {
       unlockButton();
-      return {
-        completed: 0,
-        error: "passwords don't match",
-        info: 0
-      }
+      return defaultResponse;
     }
 
     //API call
     const result = await register(values[0], values[1], values[2], values[3]);
     console.log(result);
-    if (result.completed && result.success) {
+    if (result.outcome == SUCCESS) {
       redirect("./index.html");
     } else {
+      printError(result.outcome);
       failure();
     }
     unlockButton();

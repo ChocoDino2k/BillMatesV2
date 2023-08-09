@@ -7,6 +7,25 @@ function collectInfo() {
   return inputs;
 }
 
+
+async function testLoginUP(username, password) {
+  const payload = JSON.stringify(
+    {
+      username: username,
+      password: password
+    }
+  );
+  postOptions.body = payload;
+  postOptions.headers.Function = "loginUP";
+
+  const result = await fetch(url, postOptions);
+  if ( result.status != 200 ) {
+    return defaultResponse;
+  }
+  const response = await result.text();
+  return response;
+}
+
 async function submit() {
   if (buttonLock) {
     lockButton();
@@ -15,11 +34,11 @@ async function submit() {
     const result = await testLoginUP(values[0], values[1]);
     console.log(result);
 
-    if (result.completed && result.success) { //no errors and worked
+    if (result.outcome == SUCCESS) { //no errors and worked
       redirect("/Home/");
       return;
     } else {
-      console.log("gaah");
+      printError(result.outcome);
     }
 
     unlockButton();

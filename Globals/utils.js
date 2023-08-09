@@ -1,5 +1,37 @@
 const url = "http://127.0.0.1:1025";
 
+//RESPONSE constants
+const NORESULT = 0;
+const SUCCESS = 1;
+const MISSINGPROP = 2;
+const BADREQUEST = 3;
+const BADPROP = 4;
+const BADMETHOD = 5;
+
+const postOptions = {
+  method: "POST",
+  mode: "cors",
+  headers: {
+    "Content-Type": "application/json",
+    "Function": "undefined"
+  },
+  body: null
+};
+
+const getOptions = {
+  method: "GET",
+  mode: "cors",
+  headers: {
+    "Content-Type": "application/json",
+    "Function": "undefined"
+  }
+};
+
+const defaultResponse = {
+  outcome: BADREQUEST,
+  data: null
+}
+
 function redirect(page) {
   window.location.href = page;
 }
@@ -21,80 +53,6 @@ function isButtonLocked() {
 }
 
 
-// call to test for a valid login using a username and password
-async function testLoginUP(username, password) {
-  const request = JSON.stringify({
-    username: username,
-    password: password
-  });
-  const options = {
-    method: "POST",
-    mode: "no-cors",
-    headers: {
-      "Content-Type": "application/json",
-      "function": "login"
-    },
-    body: request
-  };
-
-  try {
-    const result = await fetch(url, options);
-    if (result.status == 200) {
-      const data = await result.text();
-      return data;
-    } else {
-      return {
-        completed: 0,
-        reason: result.statusText
-      };
-    }
-  } catch (e) {
-    console.log(e);
-    return {
-      completed: 0,
-      reason: e
-    };
-  }
-}
-
-
-// call to test for a valid login using a username and password
-async function register(username, fname, lname, password) {
-  const request = JSON.stringify({
-    username: username,
-    name: fname + " " + lname,
-    password: password
-  });
-  const options = {
-    method: "POST",
-    mode: "no-cors",
-    headers: {
-      "Content-Type": "application/json",
-      "function": "login"
-    },
-    body: request
-  };
-
-  try {
-    const result = await fetch(url, options);
-    if (result.status == 200) {
-      const data = await result.text();
-      return data;
-    } else {
-      return {
-        completed: 0,
-        reason: result.statusText
-      };
-    }
-  } catch (e) {
-    console.log(e);
-    return {
-      completed: 0,
-      reason: e
-    };
-  }
-}
-
 function getToken() {
   return document.cookie
   .split("; ")
@@ -104,4 +62,26 @@ function getToken() {
 
 function removeToken() {
   document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=None; Secure"
+}
+
+function printError( outcome ) {
+  switch (outcome) {
+    case NORESULT:
+      console.log("No result was found");
+      break;
+    case MISSINGPROP:
+      console.log("Missing a property in the input");
+      break;
+    case BADREQUEST:
+      console.log("Made a bad request. Either non-200 response or syntax error while parsing");
+      break;
+    case BADPROP:
+      console.log("Property or value syntax error while parsing");
+      break;
+    case BADMETHOD:
+      console.log("Could not find the method provided in the header");
+      break;
+    default:
+      console.log("unknown error code");
+  }
 }
