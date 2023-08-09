@@ -4,7 +4,7 @@ OBJECTS = $(SOURCES:.c=.o)
 HFILES = myserver.h
 EXEC = run
 DATE = $(shell date +%Y%m%d-%H:%M:%S)
-all: clean $(EXEC) git-commit
+all: $(EXEC) git-commit
 
 $(EXEC): $(OBJECTS)
 	gcc $(CFLAGS) -o $@ $^
@@ -22,7 +22,7 @@ clean:
 	rm -f run *.o lex.yy.c y.tab.*
 
 git-commit:
-	git add *.c *.h Makefile >> .local.git.out || echo
+	git add . >> .local.git.out || echo
 	git commit -a -m 'Automatic commit $(DATE)' >> .local.git.out || echo
 
 .PHONY: clean

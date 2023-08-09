@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "json_util.h"
 
@@ -85,3 +86,19 @@ void freeObj(obj_stc* obj) {
 	obj->length = 0;
 	free(obj);
 }
+
+int getPropertyIdx(obj_stc* obj, const char* property) {
+	if ( obj == NULL ) { return -1; }
+	int propLen = strlen(property);
+	int i = 0;
+	while( 
+				( i < obj->length ) && 
+				( strlen(obj->items[i].property) == propLen ) &&
+				( strncmp(property, obj->items[i].property, propLen) ) 
+			 ) 
+	{
+		i++;
+	}
+	return ((i + 1) % (obj->length + 1)) - 1; //returns -1 if i == obj->length
+}
+

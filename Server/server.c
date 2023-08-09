@@ -16,6 +16,9 @@
 #include "server.h"
 
 extern int yyparse();
+extern int yy_scan_string(char *);
+extern int yylex();
+extern int yylex_destroy();
 
 void setupInterruptHandlers() {
 	struct sigaction signalAction;
@@ -92,10 +95,6 @@ int createServerSocket() {
 }
 
 int main() {
-	yyparse();
-	dumpJson(peek(), 0);
-	freeObj(peek());
-	exit(1);
 	int server = createServerSocket();
 	while ( 1 ) {
 		struct sockaddr_in clientIPAddr;
@@ -189,16 +188,15 @@ int main() {
 			"Access-Control-Allow-Methods: GET,HEAD,OPTIONS,POST\r\n"
 			"Access-Control-Allow-Headers: Access-Control-Allow-Headers,Origin,Accept,X-Requested-With,Content-Type,Access-Control-Request-Method,Access-Control-Request-Headers\r\n"
 			"Connection: keep-alive\r\n"
-			"Content-Length: 5\r\n"
 			"Keep-Alive: timeout=10000, max=10\r\n"
+			"Content-Length: 1\r\n"
 			"\r\n"
-			"hello";
+			"a";
 			}
 			if ( strncmp(buffer, "POST", 4) == 0 ) {
-				login_stc login;
-				parseLogin(&login, buffer + headersSize + 4);
-				printf("username parsed: %s\n", login.username);
-				printf("password parsed: %s\n", login.password);
+				yy_scan_string( buffer + headersSize + 4 );
+				yyparse();
+				yylex_destroy();
 			}
 
 			num = send( requestSocket, response, strlen(response), 0);
@@ -212,6 +210,7 @@ int main() {
 		printf("Closing connection\n");
 		shutdown( requestSocket, SHUT_RDWR );
 		close( requestSocket );
+		freeObj(peek());
 	}
 
 

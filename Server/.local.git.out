@@ -315,3 +315,22 @@ nothing added to commit but untracked files present (use "git add" to track)
  create mode 100644 Server/lex.yy.c
  create mode 100644 Server/y.tab.c
  create mode 100644 Server/y.tab.h
+[local 164cf1f] Automatic commit 20230808-21:11:37
+[local d1a0e09] Automatic commit 20230808-21:23:42
+ 2 files changed, 2 insertions(+), 5 deletions(-)
+[local fe250cd] Automatic commit 20230808-21:26:09
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+[local b8ad0c4] Automatic commit 20230809-10:40:21
+ 4 files changed, 22 insertions(+)
+[local 161961b] Automatic commit 20230809-10:41:07
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+[local 3925432] Automatic commit 20230809-10:42:57
+ 3 files changed, 3 insertions(+), 1 deletion(-)
+ create mode 100755 Server/run
+[local 791a7c8] Automatic commit 20230809-10:43:45
+ 3 files changed, 5 insertions(+), 1 deletion(-)
+ create mode 100644 .gitignore
+[local 66b6e2a] Automatic commit 20230809-10:45:09
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+[local c1462e2] Automatic commit 20230809-10:46:54
+ 2 files changed, 4 insertions(+), 2 deletions(-)

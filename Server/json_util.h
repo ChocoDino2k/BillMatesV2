@@ -43,4 +43,6 @@ obj_stc* peek();
 int startObj();
 int endObj();
 void dumpJson(obj_stc*, int);
+int getPropertyIdx(obj_stc*, const char*);
+
 #endif
